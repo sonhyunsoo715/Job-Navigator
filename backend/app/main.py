@@ -17,7 +17,7 @@ app = FastAPI(
 # ✅ CORS 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings["CORS_ALLOWED_ORIGINS"],
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -34,4 +34,4 @@ def read_root():
     return {"message": f"Welcome to the {settings['APP_NAME']} API!"}
 
 
-app.include_router(job.router, prefix="/api/v1/jobs", tags=["Jobs"])
+app.include_router(job.router)
